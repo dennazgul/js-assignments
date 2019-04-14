@@ -30,7 +30,15 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    if (num % 3 == 0 && num % 5 == 0) {
+        return 'FizzBuzz';
+    } else if (num % 3 == 0) {
+        return 'Fizz';
+    } else if (num % 5 == 0) {
+        return 'Buzz';
+    } else {
+        return num;
+    }
 }
 
 
@@ -46,7 +54,9 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if (n == 1) { return 1 } else {
+        return n * getFactorial(n - 1);
+    }
 }
 
 
@@ -63,7 +73,7 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+    return ((n1 + n2) * (n2 - n1 + 1) / 2);
 }
 
 
@@ -81,8 +91,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+    if (a + b <= c || a + c <= b || b + c <= a) {
+        return false;
+    }
+    return true;
 }
 
 
@@ -192,7 +205,31 @@ function findFirstSingleChar(str) {
  *
  */
 function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-    throw new Error('Not implemented');
+    if (a > b) {
+        if (isStartIncluded) {
+            if (isEndIncluded) {
+                return `[${b}, ${a}]`;
+            }
+            return `[${b}, ${a})`;
+        } else {
+            if (isEndIncluded) {
+                return `(${b}, ${a}]`;
+            }
+            return `(${b}, ${a})`;
+        }
+    } else {
+        if (isStartIncluded) {
+            if (isEndIncluded) {
+                return `[${a}, ${b}]`;
+            }
+            return `[${a}, ${b})`;
+        } else {
+            if (isEndIncluded) {
+                return `(${a}, ${b}]`;
+            }
+            return `(${a}, ${b})`;
+        }
+    }
 }
 
 
@@ -209,7 +246,11 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 function reverseString(str) {
-    throw new Error('Not implemented');
+    var newStr = '';
+        for (var i = str.length - 1; i >= 0; i--) {
+            newStr += str.charAt(i);
+        }
+        return newStr;
 }
 
 
@@ -226,7 +267,12 @@ function reverseString(str) {
  *   34143 => 34143
  */
 function reverseInteger(num) {
-    throw new Error('Not implemented');
+    var str = String(num);
+    var newStr = '';
+    for (var i = str.length - 1; i >= 0; i--) {
+        newStr += str.charAt(i);
+    }
+    return Number(newStr);
 }
 
 
@@ -270,7 +316,17 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    var str = String(num);
+    var sum = 0;
+    for (var i=0;i<str.length;i++) {
+        sum+=Number(str.charAt(i));
+    }
+    var sumStr = String(sum);
+    var final = 0;
+    for (var i=0;i<sumStr.length;i++) {
+        final+=Number(sumStr.charAt(i));
+    }
+    return final;
 }
 
 
@@ -296,8 +352,28 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
-}
+        var bracketsConfig = ['[',']','(',')','{','}','<','>'];
+        var myStr = [];
+        var gg;
+        for (var i=0; i<str.length; i++) {
+            myStr.push(str.charAt(i));
+        }
+        for (var i=0; i<myStr.length; i++) {
+            for (var k=0; k< bracketsConfig.length;k=k+2) {
+                if (myStr[i] == bracketsConfig[k] && myStr[i+1] == bracketsConfig[k+1]) {
+                    myStr.splice(i, 2);
+                    i = 0;
+                    k=-2;
+                }
+            }
+        }
+        if (myStr.length ==0) {
+            gg = true
+        } else {
+          gg = false;
+        }
+        return gg;
+    }
 
 
 /**
@@ -443,15 +519,15 @@ module.exports = {
     doRectanglesOverlap: doRectanglesOverlap,
     isInsideCircle: isInsideCircle,
     findFirstSingleChar: findFirstSingleChar,
-    getIntervalString : getIntervalString,
+    getIntervalString: getIntervalString,
     reverseString: reverseString,
     reverseInteger: reverseInteger,
     isCreditCardNumber: isCreditCardNumber,
     getDigitalRoot: getDigitalRoot,
     isBracketsBalanced: isBracketsBalanced,
-    timespanToHumanString : timespanToHumanString,
+    timespanToHumanString: timespanToHumanString,
     toNaryString: toNaryString,
     getCommonDirectoryPath: getCommonDirectoryPath,
     getMatrixProduct: getMatrixProduct,
-    evaluateTicTacToePosition : evaluateTicTacToePosition
+    evaluateTicTacToePosition: evaluateTicTacToePosition
 };

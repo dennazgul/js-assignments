@@ -47,7 +47,7 @@ function getComposition(f,g) {
  *
  */
 function getPowerFunction(exponent) {
-    throw new Error('Not implemented');
+    return arg=> Math.pow(arg,exponent);
 }
 
 
@@ -86,7 +86,6 @@ function getPolynom() {
 function memoize(func) {
     throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the function trying to call the passed function and if it throws,

@@ -32,10 +32,19 @@
  * @return {Iterable.<string>}
  *
  */
-function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+function get99BottlesOfBeer() {
+   /* var count = 98;
+    var obj = {str:'99 bottles of beer on the wall, 99 bottles of beer.'}
+    while (count>0) {
+        str+='Take one down and pass it around, 98 bottles of beer on the wall.\n';
+        str+=count+' bottles of beer on the wall, '+count+' bottles of beer.\n';
+        count= count -1;
+    }
+    str +='No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.'
+    return str;
+}*/
+throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the Fibonacci sequence:
