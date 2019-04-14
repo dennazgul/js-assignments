@@ -256,6 +256,7 @@ return line;
  *
  */
 function encodeToRot13(str) {
+    var str='abcdefghigklmnopqrstuvwxyz'
     throw new Error('Not implemented');
 }
 
@@ -273,7 +274,10 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if (typeof value =='string' || value instanceof String) {
+        return true;
+    }
+    return false;
 }
 
 
